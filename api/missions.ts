@@ -24,6 +24,8 @@ function generateId(): string {
 const handler: VercelApiHandler = async (req, res) => {
   const { method, query, body } = req
 
+  console.log('[missions] Method:', method, 'Body:', JSON.stringify(body).substring(0, 100))
+
   if (method === 'POST') {
     const missionText = typeof body?.text === 'string' ? body.text.trim() : ''
 
@@ -46,6 +48,8 @@ const handler: VercelApiHandler = async (req, res) => {
 
     missions.set(id, mission)
 
+    console.log('[missions] Created mission:', id)
+
     // Run mission pipeline asynchronously
     runMissionPipeline(id, missionText).catch(err => {
       console.error('[missions] Pipeline error:', err)
@@ -60,8 +64,13 @@ const handler: VercelApiHandler = async (req, res) => {
     return
   }
 
-  if (method === 'GET' && query.id) {
-    const mission = missions.get(query.id as string)
+  if (method === 'GET') {
+    const id = (query as any).id as string | undefined
+    if (!id) {
+      res.status(400).json({ error: 'Missing mission id' })
+      return
+    }
+    const mission = missions.get(id)
     if (!mission) {
       res.status(404).json({ error: 'Mission not found' })
       return

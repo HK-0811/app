@@ -1,32 +1,33 @@
-import type { VercelApiHandler, VercelRequest } from '@vercel/node'
+import type { VercelApiHandler } from '@vercel/node'
 
-const handler: VercelApiHandler = async (req: VercelRequest, res) => {
+const handler: VercelApiHandler = async (req, res) => {
   const apiKey = process.env.OPENROUTER_API_KEY
   
   if (!apiKey) {
+    console.error('[transcribe] OPENROUTER_API_KEY not configured')
     res.status(500).json({ error: 'OPENROUTER_API_KEY not configured' })
     return
   }
 
   try {
-    const formData = (req as any).formData()
-    const audioFile = formData.get('audio') as File | null
+    const body = req.body as { audio?: string; type?: string }
     
-    if (!audioFile) {
-      res.status(400).json({ error: 'No audio file provided' })
+    if (!body?.audio) {
+      res.status(400).json({ error: 'No audio provided' })
       return
     }
 
-    const arrayBuffer = await audioFile.arrayBuffer()
-    const buffer = Buffer.from(arrayBuffer)
-    const audioBase64 = buffer.toString('base64')
+    const audioBase64 = body.audio
+    const audioType = body.type || 'audio/webm'
+
+    console.log('[transcribe] Sending request to OpenRouter')
 
     const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${apiKey}`,
         'Content-Type': 'application/json',
-        'HTTP-Referer': process.env.OPENROUTER_SITE_URL || 'http://localhost:3000',
+        'HTTP-Referer': process.env.OPENROUTER_SITE_URL || 'https://fashionspin.vercel.app',
         'X-Title': process.env.OPENROUTER_APP_NAME || 'FashionSpin',
       },
       body: JSON.stringify({
@@ -53,6 +54,8 @@ const handler: VercelApiHandler = async (req: VercelRequest, res) => {
 
     const result = await response.json()
     const content = result?.choices?.[0]?.message?.content || ''
+    
+    console.log('[transcribe] Success, content:', content.substring(0, 50))
     res.json({ text: content })
   } catch (error) {
     console.error('[transcribe] Exception:', error)

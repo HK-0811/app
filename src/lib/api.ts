@@ -14,17 +14,20 @@ export async function createMission(
   text?: string,
   audio?: Blob
 ): Promise<{ id: string }> {
-  const formData = new FormData()
+  const body: Record<string, unknown> = {}
   if (text?.trim()) {
-    formData.append('text', text.trim())
+    body.text = text.trim()
   }
   if (audio) {
-    formData.append('audio', audio, 'mission.webm')
+    const arrayBuffer = await audio.arrayBuffer()
+    body.audio = Buffer.from(arrayBuffer).toString('base64')
+    body.audioType = audio.type
   }
 
   const res = await fetch(`${API}/missions`, {
     method: 'POST',
-    body: formData,
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
   })
 
   if (!res.ok) {
@@ -35,7 +38,7 @@ export async function createMission(
 }
 
 export async function getMission(id: string): Promise<MissionResult> {
-  const res = await fetch(`${API}/missions/${id}`)
+  const res = await fetch(`${API}/missions?id=${id}`)
   if (!res.ok) {
     throw new Error('Mission not found')
   }
@@ -43,12 +46,16 @@ export async function getMission(id: string): Promise<MissionResult> {
 }
 
 export async function transcribeAudio(audio: Blob): Promise<{ text: string }> {
-  const formData = new FormData()
-  formData.append('audio', audio, 'audio.webm')
+  const arrayBuffer = await audio.arrayBuffer()
+  const base64 = Buffer.from(arrayBuffer).toString('base64')
 
   const res = await fetch(`${API}/transcribe`, {
     method: 'POST',
-    body: formData,
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      audio: base64,
+      type: audio.type || 'audio/webm'
+    }),
   })
 
   if (!res.ok) {
