@@ -1,0 +1,60 @@
+{
+  "clothing_metadata": [
+    {
+      "image_file": "Gemini_Generated_Image_55d46355d46355d4.jpg",
+      "garment_type": "Kurta Set",
+      "style": "Short Kurta",
+      "kurta_color": "Maroon",
+      "bottom_color": "Beige",
+      "design_details": "Textured subtle zigzag weave, mandarin collar, half-button placket."
+    },
+    {
+      "image_file": "Gemini_Generated_Image_mxti2fmxti2fmxti.jpg",
+      "garment_type": "Kurta Set",
+      "style": "Long Kurta",
+      "kurta_color": "Mustard Yellow",
+      "bottom_color": "White",
+      "design_details": "Intricate white floral embroidery on the neckline, placket, and bottom hem."
+    },
+    {
+      "image_file": "Gemini_Generated_Image_ukx78jukx78jukx7.jpg",
+      "garment_type": "Kurta Set",
+      "style": "Long Kurta",
+      "kurta_color": "Multicolor (Peach, Teal, Orange, Olive, White)",
+      "bottom_color": "White",
+      "design_details": "All-over geometric diamond ikat-style print, mandarin collar."
+    },
+    {
+      "image_file": "hf_20260413_120927_80a0e44d-29e5-4b7a-b698-a7270311c280.jpg",
+      "garment_type": "Kurta Set",
+      "style": "Long Kurta",
+      "kurta_color": "Light Blue and White",
+      "bottom_color": "White",
+      "design_details": "Vertical pinstripes, prominent white piping details framing the front, extended button placket."
+    },
+    {
+      "image_file": "image_d7678a.png",
+      "garment_type": "Jeans",
+      "style": "Straight/Slim Fit",
+      "color": "Light Blue",
+      "cloth_type": "Denim",
+      "design_details": "Light wash, standard 5-pocket styling, zip fly with top button closure, tonal stitching."
+    },
+    {
+      "image_file": "image_d76a30.png",
+      "garment_type": "Jeans",
+      "style": "Straight/Slim Fit",
+      "color": "Medium Blue",
+      "cloth_type": "Denim",
+      "design_details": "Medium wash with subtle fading, slight distressing around the front pocket edges, standard 5-pocket styling."
+    },
+    {
+      "image_file": "image_d76a6c.png",
+      "garment_type": "Trousers/Pants",
+      "style": "Straight/Slim Fit",
+      "color": "Khaki/Beige",
+      "cloth_type": "Cotton Twill",
+      "design_details": "Solid color, 5-pocket styling similar to jeans, matching tonal stitching, zip fly with top button closure."
+    }
+  ]
+}
