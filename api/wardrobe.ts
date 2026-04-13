@@ -1,12 +1,12 @@
 import type { VercelApiHandler } from '@vercel/node'
 import path from 'path'
-import { loadWardrobeCatalog } from '../server/lib/wardrobeCatalog'
+import { loadWardrobeManifest } from '../server/lib/catalog'
 
-const wardrobeRoot = path.join(process.cwd(), 'public', 'wardrobe')
+const manifestPath = path.join(process.cwd(), 'public', 'wardrobe', 'manifest.json')
 
 const handler: VercelApiHandler = async (_req, res) => {
   try {
-    const items = loadWardrobeCatalog(wardrobeRoot)
+    const items = loadWardrobeManifest(manifestPath)
     res.json(items)
   } catch (error) {
     console.error('[wardrobe] Error:', error)

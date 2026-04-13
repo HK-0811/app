@@ -4,11 +4,12 @@ import express from 'express'
 import fs from 'fs'
 import multer from 'multer'
 import path from 'path'
+import { loadWardrobeManifest } from './server/lib/catalog'
 import { loadLocalEnv } from './server/lib/loadEnv'
 import { createMissionResult } from './server/lib/missionService'
-import { loadWardrobeCatalog } from './server/lib/wardrobeCatalog'
 
 const wardrobeRoot = path.join(path.resolve('public'), 'wardrobe')
+const manifestPath = path.join(wardrobeRoot, 'manifest.json')
 
 export function expressPlugin() {
   return {
@@ -22,7 +23,7 @@ export function expressPlugin() {
       app.use(express.json())
 
       app.get('/api/wardrobe', (_req, res) => {
-        res.json(loadWardrobeCatalog(wardrobeRoot))
+        res.json(loadWardrobeManifest(manifestPath))
       })
 
       app.post('/api/missions', async (req, res) => {
@@ -38,6 +39,7 @@ export function expressPlugin() {
           const mission = await createMissionResult({
             missionText,
             wardrobeRoot,
+            assetSourceMode: 'file',
           })
 
           res.json(mission)

@@ -1,182 +1,90 @@
 [
   {
-    "id": "midnight-polo",
-    "name": "Midnight Polo",
-    "category": "top",
-    "imagePath": "/wardrobe/items/midnight-polo.png",
-    "colors": ["navy"],
-    "styleTags": ["smart", "clean", "date"],
-    "layerRole": "base"
-  },
-  {
-    "id": "mint-tee",
-    "name": "Mint Tee",
-    "category": "top",
-    "imagePath": "/wardrobe/items/mint-tee.png",
-    "colors": ["mint", "green"],
-    "styleTags": ["easy", "fresh", "college", "casual"],
-    "layerRole": "base"
-  },
-  {
-    "id": "navy-overshirt",
-    "name": "Navy Overshirt",
-    "category": "top",
-    "imagePath": "/wardrobe/items/navy-overshirt.png",
-    "colors": ["navy"],
-    "styleTags": ["layered", "college", "smart-casual"],
-    "layerRole": "layer"
-  },
-  {
-    "id": "cream-kurta",
-    "name": "Cream Kurta",
-    "category": "top",
-    "imagePath": "/wardrobe/items/cream-kurta.png",
-    "colors": ["cream", "white"],
-    "styleTags": ["shaadi", "elevated", "traditional", "festive"],
-    "layerRole": "base"
-  },
-  {
-    "id": "brown-kurta",
+    "id": "Gemini_Generated_Image_55d46355d46355d4",
     "name": "Brown Kurta",
     "category": "top",
-    "imagePath": "/wardrobe/items/brown-kurta.png",
-    "colors": ["brown", "maroon"],
-    "styleTags": ["shaadi", "festive", "hero-look"],
-    "layerRole": "base"
+    "imagePath": "/wardrobe/kurtas/Gemini_Generated_Image_55d46355d46355d4.png",
+    "colors": ["maroon", "beige"],
+    "styleTags": ["kurta-set", "short-kurta", "shaadi", "festive", "maroon", "beige"],
+    "layerRole": "base",
+    "garmentType": "Kurta Set",
+    "style": "Short Kurta",
+    "bottomColor": "Beige",
+    "designDetails": "Textured subtle zigzag weave, mandarin collar, half-button placket."
   },
   {
-    "id": "training-tank",
-    "name": "Training Tank",
+    "id": "Gemini_Generated_Image_mxti2fmxti2fmxti",
+    "name": "Mustard Kurta",
     "category": "top",
-    "imagePath": "/wardrobe/items/training-tank.png",
-    "colors": ["graphite", "grey"],
-    "styleTags": ["gym", "sport", "technical"],
-    "layerRole": "base"
+    "imagePath": "/wardrobe/kurtas/Gemini_Generated_Image_mxti2fmxti2fmxti.png",
+    "colors": ["mustard", "yellow", "white"],
+    "styleTags": ["kurta-set", "long-kurta", "shaadi", "festive", "mustard", "yellow", "white"],
+    "layerRole": "base",
+    "garmentType": "Kurta Set",
+    "style": "Long Kurta",
+    "bottomColor": "White",
+    "designDetails": "Intricate white floral embroidery on the neckline, placket, and bottom hem."
   },
   {
-    "id": "black-tee",
-    "name": "Black Essential Tee",
+    "id": "Gemini_Generated_Image_ukx78jukx78jukx7",
+    "name": "Ikat Kurta",
     "category": "top",
-    "imagePath": "/wardrobe/items/black-tee.png",
-    "colors": ["black"],
-    "styleTags": ["minimal", "versatile", "casual", "date"],
-    "layerRole": "base"
+    "imagePath": "/wardrobe/kurtas/Gemini_Generated_Image_ukx78jukx78jukx7.png",
+    "colors": ["peach", "teal", "orange", "olive", "white"],
+    "styleTags": ["kurta-set", "long-kurta", "shaadi", "festive", "printed", "multicolor"],
+    "layerRole": "base",
+    "garmentType": "Kurta Set",
+    "style": "Long Kurta",
+    "bottomColor": "White",
+    "designDetails": "All-over geometric diamond ikat-style print, mandarin collar."
   },
   {
-    "id": "white-shirt",
-    "name": "White Linen Shirt",
+    "id": "hf_20260413_120927_80a0e44d-29e5-4b7a-b698-a7270311c280",
+    "name": "Blue Stripe Kurta",
     "category": "top",
-    "imagePath": "/wardrobe/items/white-shirt.png",
-    "colors": ["white"],
-    "styleTags": ["clean", "smart", "date", "shaadi"],
+    "imagePath": "/wardrobe/kurtas/hf_20260413_120927_80a0e44d-29e5-4b7a-b698-a7270311c280.png",
+    "colors": ["light-blue", "white"],
+    "styleTags": ["kurta-set", "long-kurta", "shaadi", "festive", "striped", "blue", "white"],
+    "layerRole": "base",
+    "garmentType": "Kurta Set",
+    "style": "Long Kurta",
+    "bottomColor": "White",
+    "designDetails": "Vertical pinstripes, prominent white piping details framing the front, extended button placket."
+  },
+  {
+    "id": "Gemini_Generated_Image_jymquejymquejymq",
+    "name": "Graphic T-Shirt",
+    "category": "top",
+    "imagePath": "/wardrobe/tshirts/Gemini_Generated_Image_jymquejymquejymq.png",
+    "colors": [],
+    "styleTags": ["tshirt", "casual", "college"],
     "layerRole": "base"
   },
   {
-    "id": "stone-chinos",
-    "name": "Stone Chinos",
+    "id": "blue_jeans",
+    "name": "Blue Jeans",
     "category": "bottom",
-    "imagePath": "/wardrobe/items/stone-chinos.png",
-    "colors": ["stone", "beige"],
-    "styleTags": ["smart", "date", "college"],
+    "imagePath": "/wardrobe/bottoms/blue_jeans.png",
+    "colors": ["blue"],
+    "styleTags": ["jeans", "casual", "college", "date"],
     "layerRole": "base"
   },
   {
-    "id": "sand-chinos",
-    "name": "Sand Chinos",
+    "id": "dark_blue_jeans",
+    "name": "Dark Blue Jeans",
     "category": "bottom",
-    "imagePath": "/wardrobe/items/sand-chinos.png",
-    "colors": ["sand", "beige"],
-    "styleTags": ["clean", "college", "day"],
+    "imagePath": "/wardrobe/bottoms/dark_blue_jeans.png",
+    "colors": ["dark-blue", "blue"],
+    "styleTags": ["jeans", "casual", "date", "evening"],
     "layerRole": "base"
   },
   {
-    "id": "cream-pajama",
-    "name": "Cream Pajama",
+    "id": "brown_trouser",
+    "name": "Brown Trouser",
     "category": "bottom",
-    "imagePath": "/wardrobe/items/cream-pajama.png",
-    "colors": ["cream", "off-white"],
-    "styleTags": ["shaadi", "festive", "hero-look"],
+    "imagePath": "/wardrobe/bottoms/brown_trouser.png",
+    "colors": ["brown", "beige"],
+    "styleTags": ["trouser", "smart", "date", "shaadi"],
     "layerRole": "base"
-  },
-  {
-    "id": "charcoal-trousers",
-    "name": "Charcoal Trousers",
-    "category": "bottom",
-    "imagePath": "/wardrobe/items/charcoal-trousers.png",
-    "colors": ["charcoal", "grey"],
-    "styleTags": ["shaadi", "sharp", "tailored", "formal"],
-    "layerRole": "base"
-  },
-  {
-    "id": "black-joggers",
-    "name": "Black Joggers",
-    "category": "bottom",
-    "imagePath": "/wardrobe/items/black-joggers.png",
-    "colors": ["black"],
-    "styleTags": ["gym", "easy", "sport"],
-    "layerRole": "base"
-  },
-  {
-    "id": "dark-jeans",
-    "name": "Dark Wash Jeans",
-    "category": "bottom",
-    "imagePath": "/wardrobe/items/dark-jeans.png",
-    "colors": ["indigo", "blue"],
-    "styleTags": ["versatile", "casual", "date", "college"],
-    "layerRole": "base"
-  },
-  {
-    "id": "white-sneakers",
-    "name": "White Sneakers",
-    "category": "shoes",
-    "imagePath": "/wardrobe/items/white-sneakers.png",
-    "colors": ["white"],
-    "styleTags": ["clean", "college", "casual", "versatile"],
-    "layerRole": "base"
-  },
-  {
-    "id": "brown-loafers",
-    "name": "Brown Loafers",
-    "category": "shoes",
-    "imagePath": "/wardrobe/items/brown-loafers.png",
-    "colors": ["brown"],
-    "styleTags": ["smart", "date", "shaadi", "formal"],
-    "layerRole": "base"
-  },
-  {
-    "id": "training-shoes",
-    "name": "Training Shoes",
-    "category": "shoes",
-    "imagePath": "/wardrobe/items/training-shoes.png",
-    "colors": ["black", "grey"],
-    "styleTags": ["gym", "sport", "technical"],
-    "layerRole": "base"
-  },
-  {
-    "id": "aviator-shades",
-    "name": "Aviator Shades",
-    "category": "eyewear",
-    "imagePath": "/wardrobe/items/aviator-shades.png",
-    "colors": ["gold", "black"],
-    "styleTags": ["date", "smart", "statement"],
-    "layerRole": "accessory"
-  },
-  {
-    "id": "silver-watch",
-    "name": "Silver Watch",
-    "category": "accessory",
-    "imagePath": "/wardrobe/items/silver-watch.png",
-    "colors": ["silver"],
-    "styleTags": ["smart", "date", "shaadi", "elevated"],
-    "layerRole": "accessory"
-  },
-  {
-    "id": "black-cap",
-    "name": "Black Cap",
-    "category": "accessory",
-    "imagePath": "/wardrobe/items/black-cap.png",
-    "colors": ["black"],
-    "styleTags": ["casual", "gym", "sport", "college"],
-    "layerRole": "accessory"
   }
 ]

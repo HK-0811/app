@@ -154,18 +154,29 @@ export async function generateLookWithOpenRouter(
   missionText: string,
   selectedItem: WardrobeItem,
   generationPrompt: string,
-  baseImagePath: string
+  imageSources: {
+    baseImagePath?: string
+    garmentImagePath?: string
+    baseImageUrl?: string
+    garmentImageUrl?: string
+  }
 ) {
   if (!process.env.OPENROUTER_API_KEY) {
     console.warn('[OpenRouter] OPENROUTER_API_KEY missing; using base image fallback.')
     return null
   }
 
-  if (!selectedItem.localImagePath) {
-    throw new Error('Selected wardrobe item is missing a local image path.')
-  }
-
   const model = process.env.OPENROUTER_IMAGE_MODEL ?? 'google/gemini-3.1-flash-image-preview'
+  const baseImageSource = imageSources.baseImagePath
+    ? toDataUrlFromFile(imageSources.baseImagePath)
+    : imageSources.baseImageUrl
+  const garmentImageSource = imageSources.garmentImagePath
+    ? toDataUrlFromFile(imageSources.garmentImagePath)
+    : imageSources.garmentImageUrl
+
+  if (!baseImageSource || !garmentImageSource) {
+    throw new Error('Missing image sources for generation.')
+  }
 
   const requestBody = {
     model,
@@ -187,13 +198,13 @@ export async function generateLookWithOpenRouter(
           {
             type: 'image_url',
             image_url: {
-              url: toDataUrlFromFile(baseImagePath),
+              url: baseImageSource,
             },
           },
           {
             type: 'image_url',
             image_url: {
-              url: toDataUrlFromFile(selectedItem.localImagePath),
+              url: garmentImageSource,
             },
           },
         ],

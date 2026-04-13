@@ -6,6 +6,15 @@ export function loadWardrobeManifest(manifestPath: string): WardrobeItem[] {
   return JSON.parse(fs.readFileSync(manifestPath, 'utf-8')) as WardrobeItem[]
 }
 
+export function resolveAssetFilePath(wardrobeRoot: string, imagePath: string) {
+  const relativePath = imagePath.replace(/^\/wardrobe\//, '')
+  return path.join(wardrobeRoot, relativePath)
+}
+
+export function resolveAbsoluteAssetUrl(baseUrl: string, imagePath: string) {
+  return new URL(imagePath, baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`).toString()
+}
+
 export function summarizeWardrobe(wardrobe: WardrobeItem[]) {
   return wardrobe.map((item) => ({
     id: item.id,

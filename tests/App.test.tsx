@@ -121,12 +121,14 @@ describe('App', () => {
     await user.click(screen.getByRole('button', { name: /send mission/i }))
 
     expect(
-      await screen.findByRole('heading', { name: /two ways to wear the mission/i })
+      await screen.findByRole('heading', { name: /this is the exact pull for your mission/i })
     ).toBeInTheDocument()
     expect(screen.getByText(/sharp date-night look/i)).toBeInTheDocument()
     expect(screen.getByText(/brown kurta/i)).toBeInTheDocument()
     expect(screen.getByText(/cream pajama/i)).toBeInTheDocument()
-    expect(screen.getByText(/option 02/i)).toBeInTheDocument()
+    expect(screen.getByText(/mission pick/i)).toBeInTheDocument()
+    expect(screen.queryByText(/midnight polo/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/brown loafers/i)).not.toBeInTheDocument()
 
     await waitFor(() => {
       expect(createMission).toHaveBeenCalledWith('Date at 7 pm', undefined)
