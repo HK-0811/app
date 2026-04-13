@@ -5,14 +5,10 @@ import fs from 'fs'
 import multer from 'multer'
 import path from 'path'
 import { loadLocalEnv } from './server/lib/loadEnv'
-import { runMissionPipeline } from './server/lib/missionPipeline'
-import type { MissionResult } from './server/lib/types'
+import { createMissionResult } from './server/lib/missionService'
 import { loadWardrobeCatalog } from './server/lib/wardrobeCatalog'
 
-const publicRoot = path.resolve('public')
-const wardrobeRoot = path.resolve('wardrobe')
-
-fs.mkdirSync(path.join(publicRoot, 'generated'), { recursive: true })
+const wardrobeRoot = path.join(path.resolve('public'), 'wardrobe')
 
 export function expressPlugin() {
   return {
@@ -24,20 +20,12 @@ export function expressPlugin() {
 
       app.use(cors())
       app.use(express.json())
-      app.use('/generated', express.static(path.join(publicRoot, 'generated')))
-      app.use('/wardrobe-assets', express.static(wardrobeRoot))
-
-      const missions = new Map<string, MissionResult>()
-
-      function generateId(): string {
-        return Math.random().toString(36).slice(2, 10)
-      }
 
       app.get('/api/wardrobe', (_req, res) => {
         res.json(loadWardrobeCatalog(wardrobeRoot))
       })
 
-      app.post('/api/missions', upload.single('audio'), (req, res) => {
+      app.post('/api/missions', async (req, res) => {
         const missionText =
           typeof req.body.text === 'string' ? req.body.text.trim() : ''
 
@@ -46,43 +34,22 @@ export function expressPlugin() {
           return
         }
 
-        const id = generateId()
-        const mission: MissionResult = {
-          id,
-          stage: 'idle',
-          missionText,
-          selectedItems: [],
-          explanation: '',
-          finalImageUrl: null,
-          error: null,
-          stageTimings: {},
+        try {
+          const mission = await createMissionResult({
+            missionText,
+            wardrobeRoot,
+          })
+
+          res.json(mission)
+        } catch (error) {
+          console.error('[Mission] Error:', error)
+          res.status(500).json({ error: 'Failed to create mission.' })
         }
-
-        missions.set(id, mission)
-
-        void runMissionPipeline({
-          mission,
-          wardrobe: loadWardrobeCatalog(wardrobeRoot),
-          publicRoot,
-          wardrobeRoot,
-        })
-
-        res.json({ id, stage: 'planning' })
-      })
-
-      app.get('/api/missions/:id', (req, res) => {
-        const mission = missions.get(req.params.id)
-
-        if (!mission) {
-          res.status(404).json({ error: 'Mission not found' })
-          return
-        }
-
-        res.json(mission)
       })
 
       app.post('/api/transcribe', upload.single('audio'), async (req, res) => {
         const audioFile = req.file
+
         if (!audioFile) {
           res.status(400).json({ error: 'No audio file provided' })
           return
@@ -95,10 +62,8 @@ export function expressPlugin() {
         }
 
         try {
-          const audioBuffer = audioFile.buffer
-          const audioBase64 = Buffer.from(audioBuffer).toString('base64')
-
-          console.log('[Transcribe] Sending request to OpenRouter, audio size:', audioBuffer.length)
+          const audioBase64 = audioFile.buffer.toString('base64')
+          console.log('[Transcribe] Sending request to OpenRouter')
 
           const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
             method: 'POST',
@@ -137,7 +102,7 @@ export function expressPlugin() {
 
           if (!response.ok) {
             console.error('[Transcribe] OpenRouter error:', responseText)
-res.status(500).json({ error: `Failed to transcribe audio: ${responseText.slice(0, 200)}` })
+            res.status(500).json({ error: `Failed to transcribe audio: ${responseText.slice(0, 200)}` })
             return
           }
 
@@ -168,7 +133,7 @@ res.status(500).json({ error: `Failed to transcribe audio: ${responseText.slice(
         }
       })
 
-      app.post('/api/wardrobe/detect', upload.single('image'), async (req, res) => {
+      app.post('/api/wardrobe-detect', upload.single('image'), async (req, res) => {
         const imageFile = req.file
         if (!imageFile) {
           res.status(400).json({ error: 'No image file provided' })
@@ -269,7 +234,7 @@ res.status(500).json({ error: `Failed to transcribe audio: ${responseText.slice(
         }
       })
 
-      app.post('/api/wardrobe/save', async (req, res) => {
+      app.post('/api/wardrobe-save', async (req, res) => {
         const { metadata, fileName } = req.body
 
         if (!metadata) {

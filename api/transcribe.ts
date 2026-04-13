@@ -1,4 +1,24 @@
 import type { VercelApiHandler } from '@vercel/node'
+import multer from 'multer'
+
+const upload = multer({ storage: multer.memoryStorage() })
+
+function runMiddleware(
+  req: Parameters<VercelApiHandler>[0],
+  res: Parameters<VercelApiHandler>[1],
+  fn: (req: Parameters<VercelApiHandler>[0], res: Parameters<VercelApiHandler>[1], next: (error?: unknown) => void) => void
+) {
+  return new Promise<void>((resolve, reject) => {
+    fn(req, res, (error?: unknown) => {
+      if (error) {
+        reject(error)
+        return
+      }
+
+      resolve()
+    })
+  })
+}
 
 const handler: VercelApiHandler = async (req, res) => {
   const apiKey = process.env.OPENROUTER_API_KEY
@@ -10,15 +30,16 @@ const handler: VercelApiHandler = async (req, res) => {
   }
 
   try {
-    const body = req.body as { audio?: string; type?: string }
-    
-    if (!body?.audio) {
-      res.status(400).json({ error: 'No audio provided' })
+    await runMiddleware(req, res, upload.single('audio'))
+
+    const audioFile = (req as typeof req & { file?: Express.Multer.File }).file
+
+    if (!audioFile) {
+      res.status(400).json({ error: 'No audio file provided' })
       return
     }
 
-    const audioBase64 = body.audio
-    const audioType = body.type || 'audio/webm'
+    const audioBase64 = audioFile.buffer.toString('base64')
 
     console.log('[transcribe] Sending request to OpenRouter')
 

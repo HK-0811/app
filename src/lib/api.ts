@@ -2,6 +2,15 @@ import type { MissionResult, WardrobeItem } from '../types'
 
 const API = '/api'
 
+function arrayBufferToBase64(arrayBuffer: ArrayBuffer) {
+  const bytes = new Uint8Array(arrayBuffer)
+  let binary = ''
+  for (const byte of bytes) {
+    binary += String.fromCharCode(byte)
+  }
+  return btoa(binary)
+}
+
 export async function fetchWardrobe(): Promise<WardrobeItem[]> {
   const res = await fetch(`${API}/wardrobe`)
   if (!res.ok) {
@@ -13,14 +22,14 @@ export async function fetchWardrobe(): Promise<WardrobeItem[]> {
 export async function createMission(
   text?: string,
   audio?: Blob
-): Promise<{ id: string }> {
+): Promise<MissionResult> {
   const body: Record<string, unknown> = {}
   if (text?.trim()) {
     body.text = text.trim()
   }
   if (audio) {
     const arrayBuffer = await audio.arrayBuffer()
-    body.audio = Buffer.from(arrayBuffer).toString('base64')
+    body.audio = arrayBufferToBase64(arrayBuffer)
     body.audioType = audio.type
   }
 
@@ -37,25 +46,13 @@ export async function createMission(
   return res.json()
 }
 
-export async function getMission(id: string): Promise<MissionResult> {
-  const res = await fetch(`${API}/missions?id=${id}`)
-  if (!res.ok) {
-    throw new Error('Mission not found')
-  }
-  return res.json()
-}
-
 export async function transcribeAudio(audio: Blob): Promise<{ text: string }> {
-  const arrayBuffer = await audio.arrayBuffer()
-  const base64 = Buffer.from(arrayBuffer).toString('base64')
+  const formData = new FormData()
+  formData.append('audio', audio, 'audio.wav')
 
   const res = await fetch(`${API}/transcribe`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      audio: base64,
-      type: audio.type || 'audio/webm'
-    }),
+    body: formData,
   })
 
   if (!res.ok) {
@@ -65,37 +62,11 @@ export async function transcribeAudio(audio: Blob): Promise<{ text: string }> {
   return res.json()
 }
 
-export function pollMission(id: string, onUpdate: (m: MissionResult) => void): () => void {
-  let active = true
-
-  const poll = async () => {
-    while (active) {
-      try {
-        const mission = await getMission(id)
-        onUpdate(mission)
-        if (mission.stage === 'done' || mission.stage === 'error') {
-          break
-        }
-      } catch {
-        // Keep polling during transient startup issues.
-      }
-
-      await new Promise((resolve) => setTimeout(resolve, 900))
-    }
-  }
-
-  void poll()
-
-  return () => {
-    active = false
-  }
-}
-
 export async function saveWardrobeMetadata(
   metadata: { garment_type: string; style: string; color: string; design_details: string },
   fileName?: string
 ): Promise<{ success: boolean }> {
-  const res = await fetch(`${API}/wardrobe/save`, {
+  const res = await fetch(`${API}/wardrobe-save`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ metadata, fileName }),

@@ -78,7 +78,7 @@ export function AddClothing({ open, onClose, onAdd }: Props) {
       const formData = new FormData()
       formData.append('image', blob, 'image.jpg')
 
-      const res = await fetch('/api/wardrobe/detect', {
+      const res = await fetch('/api/wardrobe-detect', {
         method: 'POST',
         body: formData,
       })

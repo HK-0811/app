@@ -138,7 +138,7 @@ export function loadWardrobeCatalog(wardrobeRoot: string): WardrobeItem[] {
       id: fileStem,
       name: inferDisplayName(metadata, fileStem),
       category: folderCategoryMap[folderName] ?? 'top',
-      imagePath: `/wardrobe-assets/${relativePath}`,
+      imagePath: `/wardrobe/${relativePath}`,
       localImagePath: fullPath,
       sourceImageFile: path.basename(fullPath),
       colors: metadata

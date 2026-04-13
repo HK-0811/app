@@ -62,29 +62,17 @@ const missionDone: MissionResult = {
 }
 
 const fetchWardrobe = vi.fn<[], Promise<WardrobeItem[]>>()
-const createMission = vi.fn<[string, Blob | undefined], Promise<{ id: string }>>()
-const pollMission = vi.fn<[string, (mission: MissionResult) => void], () => void>()
+const createMission = vi.fn<[string, Blob | undefined], Promise<MissionResult>>()
 
 vi.mock('../src/lib/api', () => ({
   fetchWardrobe: () => fetchWardrobe(),
   createMission: (text: string, audio?: Blob) => createMission(text, audio),
-  pollMission: (id: string, onUpdate: (mission: MissionResult) => void) =>
-    pollMission(id, onUpdate),
 }))
 
 describe('App', () => {
   beforeEach(() => {
     fetchWardrobe.mockResolvedValue(mockWardrobe)
-    createMission.mockResolvedValue({ id: 'mission-1' })
-    pollMission.mockImplementation((_id, onUpdate) => {
-      onUpdate({
-        ...missionDone,
-        stage: 'planning',
-        finalImageUrl: null,
-      })
-      onUpdate(missionDone)
-      return () => {}
-    })
+    createMission.mockResolvedValue(missionDone)
   })
 
   afterEach(() => {

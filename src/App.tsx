@@ -1,11 +1,11 @@
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { StartMission } from './components/StartMission'
 import { DropMission } from './components/DropMission'
 import { CookingStage } from './components/CookingStage'
 import { WalkoutReveal } from './components/WalkoutReveal'
 import { WardrobeDrawer } from './components/WardrobeDrawer'
 import { AddClothing } from './components/AddClothing'
-import { createMission, pollMission, fetchWardrobe, saveWardrobeMetadata } from './lib/api'
+import { createMission, fetchWardrobe, saveWardrobeMetadata } from './lib/api'
 import type { AppStep, MissionInput, MissionResult, WardrobeItem } from './types'
 
 const LOCAL_STORAGE_KEY = 'fashion_spin_wardrobe'
@@ -52,7 +52,10 @@ export default function App() {
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [addOpen, setAddOpen] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const stopPollingRef = useRef<(() => void) | null>(null)
+  const wardrobeManagementEnabled =
+    typeof window !== 'undefined' &&
+    (window.location.hostname === 'localhost' ||
+      window.location.hostname === '127.0.0.1')
 
   useEffect(() => {
     fetchWardrobe().then(setWardrobe).catch(() => {})
@@ -60,12 +63,6 @@ export default function App() {
 
   useEffect(() => {
     setLocalWardrobe(loadLocalWardrobe())
-  }, [])
-
-  useEffect(() => {
-    return () => {
-      stopPollingRef.current?.()
-    }
   }, [])
 
   const handleAddLocalItem = useCallback(async (item: { image: string; metadata: { garment_type: string; style: string; color: string; design_details: string } }) => {
@@ -97,32 +94,34 @@ export default function App() {
 
   const handleSubmitMission = useCallback(async ({ text, audio }: MissionInput) => {
     setError(null)
-    try {
-      const { id } = await createMission(text, audio)
-      setStep('cooking')
-      setMissionResult({
-        id,
-        stage: audio ? 'transcribing' : 'planning',
-        missionText: text?.trim() ?? '',
-        selectedItems: [],
-        explanation: '',
-        finalImageUrl: null,
-        error: null,
-      })
+    setStep('cooking')
+    setMissionResult({
+      id: 'pending',
+      stage: audio ? 'transcribing' : 'planning',
+      missionText: text?.trim() ?? '',
+      selectedItems: [],
+      explanation: '',
+      finalImageUrl: null,
+      error: null,
+    })
 
-      stopPollingRef.current?.()
-      stopPollingRef.current = pollMission(id, (m) => {
-        setMissionResult(m)
-        if (m.stage === 'done') {
-          setStep('reveal')
-        }
-        if (m.stage === 'error') {
-          setError(m.error || 'Something went wrong')
-          setStep('mission')
-        }
-      })
+    try {
+      const [mission] = await Promise.all([
+        createMission(text, audio),
+        new Promise((resolve) => setTimeout(resolve, 900)),
+      ])
+
+      setMissionResult(mission)
+      if (mission.stage === 'error') {
+        setError(mission.error || 'Something went wrong')
+        setStep('mission')
+        return
+      }
+
+      setStep('reveal')
     } catch {
       setError('Failed to start mission. Check the server.')
+      setStep('mission')
     }
   }, [])
 
@@ -130,14 +129,12 @@ export default function App() {
     setStep('start')
     setMissionResult(null)
     setError(null)
-    stopPollingRef.current?.()
   }, [])
 
   const handleNewMission = useCallback(() => {
     setStep('mission')
     setMissionResult(null)
     setError(null)
-    stopPollingRef.current?.()
   }, [])
 
   const allWardrobe = [...localWardrobe, ...wardrobe]
@@ -178,15 +175,19 @@ export default function App() {
         onClose={() => setDrawerOpen(false)}
       />
 
-      <AddClothing
-        open={addOpen}
-        onClose={() => setAddOpen(false)}
-        onAdd={handleAddLocalItem}
-      />
+      {wardrobeManagementEnabled && (
+        <>
+          <AddClothing
+            open={addOpen}
+            onClose={() => setAddOpen(false)}
+            onAdd={handleAddLocalItem}
+          />
 
-      <button className="fab" onClick={() => setAddOpen(true)}>
-        +
-      </button>
+          <button className="fab" onClick={() => setAddOpen(true)}>
+            +
+          </button>
+        </>
+      )}
     </div>
   )
 }
