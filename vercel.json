@@ -10,10 +10,5 @@
       "src": "/api/(.*)",
       "dest": "/api/$1"
     }
-  ],
-  "env": {
-    "OPENROUTER_API_KEY": "@openrouter_api_key",
-    "OPENROUTER_SITE_URL": "@openrouter_site_url",
-    "OPENROUTER_APP_NAME": "@openrouter_app_name"
-  }
+  ]
 }
