@@ -9,7 +9,7 @@ const handler: VercelApiHandler = async (req: VercelRequest, res) => {
   }
 
   try {
-    const formData = await req.formData()
+    const formData = (req as any).formData()
     const audioFile = formData.get('audio') as File | null
     
     if (!audioFile) {
