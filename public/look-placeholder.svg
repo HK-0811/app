@@ -1,0 +1,12 @@
+<svg width="1080" height="1440" viewBox="0 0 1080 1440" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1080" height="1440" fill="#0A0A0A"/>
+  <rect x="80" y="80" width="920" height="1280" rx="40" fill="#151515" stroke="#262626" stroke-width="4"/>
+  <circle cx="540" cy="390" r="120" fill="#EDEDED"/>
+  <path d="M350 1060C350 865.633 507.633 708 702 708H378C572.367 708 730 865.633 730 1060V1190H350V1060Z" fill="#F0F0F0"/>
+  <path d="M405 760H675L735 1188H345L405 760Z" fill="#111111"/>
+  <path d="M405 760H675L635 920H445L405 760Z" fill="#E63946" fill-opacity="0.82"/>
+  <rect x="220" y="170" width="220" height="44" rx="22" fill="#457B9D"/>
+  <rect x="220" y="232" width="324" height="18" rx="9" fill="#2A2A2A"/>
+  <rect x="220" y="268" width="248" height="18" rx="9" fill="#222222"/>
+  <text x="220" y="1320" fill="#F0F0F0" font-family="Arial, sans-serif" font-size="56" font-weight="700" letter-spacing="4">DROP YOUR IMG AS /public/img1.png</text>
+</svg>

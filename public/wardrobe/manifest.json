@@ -1,0 +1,182 @@
+[
+  {
+    "id": "midnight-polo",
+    "name": "Midnight Polo",
+    "category": "top",
+    "imagePath": "/wardrobe/items/midnight-polo.png",
+    "colors": ["navy"],
+    "styleTags": ["smart", "clean", "date"],
+    "layerRole": "base"
+  },
+  {
+    "id": "mint-tee",
+    "name": "Mint Tee",
+    "category": "top",
+    "imagePath": "/wardrobe/items/mint-tee.png",
+    "colors": ["mint", "green"],
+    "styleTags": ["easy", "fresh", "college", "casual"],
+    "layerRole": "base"
+  },
+  {
+    "id": "navy-overshirt",
+    "name": "Navy Overshirt",
+    "category": "top",
+    "imagePath": "/wardrobe/items/navy-overshirt.png",
+    "colors": ["navy"],
+    "styleTags": ["layered", "college", "smart-casual"],
+    "layerRole": "layer"
+  },
+  {
+    "id": "cream-kurta",
+    "name": "Cream Kurta",
+    "category": "top",
+    "imagePath": "/wardrobe/items/cream-kurta.png",
+    "colors": ["cream", "white"],
+    "styleTags": ["shaadi", "elevated", "traditional", "festive"],
+    "layerRole": "base"
+  },
+  {
+    "id": "brown-kurta",
+    "name": "Brown Kurta",
+    "category": "top",
+    "imagePath": "/wardrobe/items/brown-kurta.png",
+    "colors": ["brown", "maroon"],
+    "styleTags": ["shaadi", "festive", "hero-look"],
+    "layerRole": "base"
+  },
+  {
+    "id": "training-tank",
+    "name": "Training Tank",
+    "category": "top",
+    "imagePath": "/wardrobe/items/training-tank.png",
+    "colors": ["graphite", "grey"],
+    "styleTags": ["gym", "sport", "technical"],
+    "layerRole": "base"
+  },
+  {
+    "id": "black-tee",
+    "name": "Black Essential Tee",
+    "category": "top",
+    "imagePath": "/wardrobe/items/black-tee.png",
+    "colors": ["black"],
+    "styleTags": ["minimal", "versatile", "casual", "date"],
+    "layerRole": "base"
+  },
+  {
+    "id": "white-shirt",
+    "name": "White Linen Shirt",
+    "category": "top",
+    "imagePath": "/wardrobe/items/white-shirt.png",
+    "colors": ["white"],
+    "styleTags": ["clean", "smart", "date", "shaadi"],
+    "layerRole": "base"
+  },
+  {
+    "id": "stone-chinos",
+    "name": "Stone Chinos",
+    "category": "bottom",
+    "imagePath": "/wardrobe/items/stone-chinos.png",
+    "colors": ["stone", "beige"],
+    "styleTags": ["smart", "date", "college"],
+    "layerRole": "base"
+  },
+  {
+    "id": "sand-chinos",
+    "name": "Sand Chinos",
+    "category": "bottom",
+    "imagePath": "/wardrobe/items/sand-chinos.png",
+    "colors": ["sand", "beige"],
+    "styleTags": ["clean", "college", "day"],
+    "layerRole": "base"
+  },
+  {
+    "id": "cream-pajama",
+    "name": "Cream Pajama",
+    "category": "bottom",
+    "imagePath": "/wardrobe/items/cream-pajama.png",
+    "colors": ["cream", "off-white"],
+    "styleTags": ["shaadi", "festive", "hero-look"],
+    "layerRole": "base"
+  },
+  {
+    "id": "charcoal-trousers",
+    "name": "Charcoal Trousers",
+    "category": "bottom",
+    "imagePath": "/wardrobe/items/charcoal-trousers.png",
+    "colors": ["charcoal", "grey"],
+    "styleTags": ["shaadi", "sharp", "tailored", "formal"],
+    "layerRole": "base"
+  },
+  {
+    "id": "black-joggers",
+    "name": "Black Joggers",
+    "category": "bottom",
+    "imagePath": "/wardrobe/items/black-joggers.png",
+    "colors": ["black"],
+    "styleTags": ["gym", "easy", "sport"],
+    "layerRole": "base"
+  },
+  {
+    "id": "dark-jeans",
+    "name": "Dark Wash Jeans",
+    "category": "bottom",
+    "imagePath": "/wardrobe/items/dark-jeans.png",
+    "colors": ["indigo", "blue"],
+    "styleTags": ["versatile", "casual", "date", "college"],
+    "layerRole": "base"
+  },
+  {
+    "id": "white-sneakers",
+    "name": "White Sneakers",
+    "category": "shoes",
+    "imagePath": "/wardrobe/items/white-sneakers.png",
+    "colors": ["white"],
+    "styleTags": ["clean", "college", "casual", "versatile"],
+    "layerRole": "base"
+  },
+  {
+    "id": "brown-loafers",
+    "name": "Brown Loafers",
+    "category": "shoes",
+    "imagePath": "/wardrobe/items/brown-loafers.png",
+    "colors": ["brown"],
+    "styleTags": ["smart", "date", "shaadi", "formal"],
+    "layerRole": "base"
+  },
+  {
+    "id": "training-shoes",
+    "name": "Training Shoes",
+    "category": "shoes",
+    "imagePath": "/wardrobe/items/training-shoes.png",
+    "colors": ["black", "grey"],
+    "styleTags": ["gym", "sport", "technical"],
+    "layerRole": "base"
+  },
+  {
+    "id": "aviator-shades",
+    "name": "Aviator Shades",
+    "category": "eyewear",
+    "imagePath": "/wardrobe/items/aviator-shades.png",
+    "colors": ["gold", "black"],
+    "styleTags": ["date", "smart", "statement"],
+    "layerRole": "accessory"
+  },
+  {
+    "id": "silver-watch",
+    "name": "Silver Watch",
+    "category": "accessory",
+    "imagePath": "/wardrobe/items/silver-watch.png",
+    "colors": ["silver"],
+    "styleTags": ["smart", "date", "shaadi", "elevated"],
+    "layerRole": "accessory"
+  },
+  {
+    "id": "black-cap",
+    "name": "Black Cap",
+    "category": "accessory",
+    "imagePath": "/wardrobe/items/black-cap.png",
+    "colors": ["black"],
+    "styleTags": ["casual", "gym", "sport", "college"],
+    "layerRole": "accessory"
+  }
+]
