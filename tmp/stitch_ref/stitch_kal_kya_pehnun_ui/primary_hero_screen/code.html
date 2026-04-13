@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kal Kya Pehnun? | Digital Atelier</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Newsreader:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#fafaf5",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#5d4201",
+                        "on-primary-fixed": "#1c1b1b",
+                        "surface-container-highest": "#e3e3de",
+                        "on-primary-fixed-variant": "#474746",
+                        "background": "#fafaf5",
+                        "tertiary-container": "#0d1a38",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#ffdea5",
+                        "on-surface": "#1a1c19",
+                        "primary": "#000000",
+                        "on-primary-container": "#858383",
+                        "on-tertiary-container": "#7783a6",
+                        "primary-fixed": "#e5e2e1",
+                        "outline": "#747878",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#000000",
+                        "on-tertiary-fixed-variant": "#3a4666",
+                        "tertiary-fixed-dim": "#bac6ec",
+                        "inverse-primary": "#c8c6c5",
+                        "inverse-on-surface": "#f1f1ec",
+                        "secondary-container": "#fed488",
+                        "secondary": "#775a19",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#2f312e",
+                        "secondary-fixed-dim": "#e9c176",
+                        "tertiary-fixed": "#dae2ff",
+                        "surface-dim": "#dadad5",
+                        "on-secondary-fixed": "#261900",
+                        "surface-tint": "#5f5e5e",
+                        "surface-container-high": "#e8e8e3",
+                        "primary-container": "#1c1b1b",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#785a1a",
+                        "surface-variant": "#e3e3de",
+                        "outline-variant": "#c4c7c7",
+                        "on-primary": "#ffffff",
+                        "surface": "#fafaf5",
+                        "on-tertiary-fixed": "#0d1a38",
+                        "surface-container": "#eeeee9",
+                        "surface-container-low": "#f4f4ef",
+                        "on-background": "#1a1c19",
+                        "on-surface-variant": "#444748"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Newsreader"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-stone-950 font-body text-stone-200 antialiased overflow-x-hidden min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-stone-900/40 backdrop-blur-xl">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-stone-100 cursor-pointer hover:opacity-80 transition-opacity" data-icon="menu">menu</span>
+</div>
+<h1 class="font-headline italic text-2xl tracking-widest text-stone-100 uppercase">ATELIER</h1>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-white/10">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="Portrait of a stylish young man with a modern haircut against a neutral architectural background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhu808L9JTevyg0j8aH9mjcTehDhp00nKnGWuhtTslVCWZ3hBqQ-cAEeaRXmm2YF8CuoJYuDvMwRwwcRupZTvYgS48ZlhWgpJSgMBTFi0nimqcwZFiS4E8pc1DRf8P_BF2yLiyDRMxz5Vbx0uQj0qSqEvF4frTIOmVwxFHfjj-Nk5V_YJcsfERg6hxItaxzPhmavpn_xETlrsPt1c6oUDpPPZft6OlSxOyM52hXxxwiW9_7N9ZExoqEVwlx0Pe2Sbx8UBSjDacHiM"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="relative pt-24 pb-40 px-6 max-w-5xl mx-auto min-h-screen flex flex-col items-center">
+<!-- Hero Section: Assistant Avatar -->
+<section class="relative w-full flex flex-col items-center mb-12">
+<div class="relative w-64 h-64 md:w-80 md:h-80 mb-6">
+<!-- Background Glow -->
+<div class="absolute inset-0 bg-stone-500/10 blur-[80px] rounded-full"></div>
+<!-- Avatar Caricature Style -->
+<div class="relative z-10 w-full h-full flex items-center justify-center">
+<img alt="Mayank - Styling Assistant" class="w-full h-full object-contain drop-shadow-2xl" data-alt="A stylized 3D avatar of a friendly male fashion assistant wearing minimalist glasses and a charcoal turtleneck" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPkZqhhus015nrojOQrMAycyllXg97PvnV3--FT06v9H4yREz9vMFMqUKg1-HJy4ENtdcQgHacqeZQ2ZIYG6cg-aMqLHc1Z7uWY_gdDONACmWjIkwMj2YGvH7LR6Z0S_rkPxxtPfg0hFdejNfqF6GKsC1dj9BwBBWdGAmR4mg-oYTet9Gs6umHkJC7fCBl3faT0Tnbk-W9uv0kdhRVsV1ERdrNXiiPJi4zJpakWZOy9dF0iSWZs6ZeX8TEUxEHahWTfVmPjBTW-V8"/>
+</div>
+</div>
+<div class="text-center space-y-2">
+<h2 class="font-headline text-3xl md:text-5xl tracking-tight text-white">Kal Kya Pehnun?</h2>
+<p class="text-stone-400 font-light tracking-wide uppercase text-[10px] space-x-2">
+<span>Weather: 24°C</span> <span>•</span> <span>Event: Work Casual</span>
+</p>
+</div>
+</section>
+<!-- Outfit Suggestions: Asymmetric Layout -->
+<div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+<!-- Outfit Card 1 -->
+<div class="glass-panel p-6 rounded-lg border border-white/5 flex flex-col gap-4 transform md:-translate-y-4 hover:scale-[1.02] transition-transform duration-500">
+<div class="flex justify-between items-start">
+<span class="bg-white/10 text-stone-200 px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-medium">Urban Minimalist</span>
+<span class="material-symbols-outlined text-stone-400" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div class="aspect-[4/5] rounded-md overflow-hidden bg-stone-900/50">
+<img alt="Outfit combo 1" class="w-full h-full object-cover" data-alt="Flat lay outfit composition with a charcoal wool coat, white cotton shirt, indigo denim, and silver watch on a grey stone surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRFg3rOTitViOTpF7mADzH5rqL_EkjftdOf4dsrd9E9qOrA6xn9abtHyVvpL2LN9LVxE5VXVx9ERziJQvhYCCxlufL7p1aNAJU6_NZIbyps539d_TbCVObSNJ8gZ_R1AsH84cpUg73hBEPJLTgY5KrgZeeT-cHERNMZBn7tqZ96G71N4_ibPJl4xLdpN5_f38ehV6Rs5ZMLpqFq7YgXGBCTrEGp5nL1CDb1JDziTvLYINNqFJoum-YNFjjLCFx9idAmNborwecxMo"/>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-white font-medium">The Evening Soiree</h3>
+<p class="text-stone-500 text-xs">Charcoal Wool, Raw Denim, Chelsea Boots</p>
+</div>
+<button class="mt-2 w-full py-4 bg-white text-black rounded-xl font-medium text-sm tracking-tight hover:opacity-90 transition-opacity active:scale-[0.98]">
+                    Add to Collection
+                </button>
+</div>
+<!-- Outfit Card 2 -->
+<div class="glass-panel p-6 rounded-lg border border-white/5 flex flex-col gap-4 md:translate-y-12 hover:scale-[1.02] transition-transform duration-500">
+<div class="flex justify-between items-start">
+<span class="bg-white/10 text-stone-200 px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-medium">Weekend Loft</span>
+<span class="material-symbols-outlined text-stone-400" data-icon="checkroom">checkroom</span>
+</div>
+<div class="aspect-[4/5] rounded-md overflow-hidden bg-stone-900/50">
+<img alt="Outfit combo 2" class="w-full h-full object-cover" data-alt="Flat lay of a beige oversized linen shirt, olive chinos, white leather sneakers, and vintage sunglasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFhXAqA5Kn_q490AUWo_rZW-WQ8SGKAeq7kUI0rGzzy_ehz75mZtpd_p2eUTOc4NuLHUPXuWoBIPcD3ievHFI4EgwPwGRoxD_iuCQXuerg51SK-4dmuxxJ9LEIRKtRSvixcWd-CnhbZ1DC6otzqyrjSs-jVEJ_Rx1GBEupGU2SjXmKnVQobUBduAypJVPZ7NVd7tsizCWUEAsfMGmE-r11aAc5TPonXht8TcUdhmE5-L8FTlVsV1F8fcvlfwdG9hA6VaB52TihPw8"/>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="text-white font-medium">Sunday Brunch</h3>
+<p class="text-stone-500 text-xs">Beige Linen, Olive Chinos, Vintage Frames</p>
+</div>
+<button class="mt-2 w-full py-4 bg-white text-black rounded-xl font-medium text-sm tracking-tight hover:opacity-90 transition-opacity active:scale-[0.98]">
+                    Add to Collection
+                </button>
+</div>
+</div>
+<!-- Floating Glass Input Bar -->
+<div class="fixed bottom-28 left-1/2 -translate-x-1/2 w-[90%] max-w-lg z-50">
+<div class="glass-panel flex items-center gap-3 p-2 pl-6 rounded-full border border-white/10 shadow-2xl">
+<input class="bg-transparent border-none flex-1 text-white placeholder-stone-500 focus:ring-0 font-light tracking-wide text-sm" placeholder="Kal kya pehnun?" type="text"/>
+<button class="w-12 h-12 flex items-center justify-center bg-white text-black rounded-full shadow-lg relative group overflow-hidden">
+<span class="material-symbols-outlined z-10" data-icon="mic">mic</span>
+<!-- Pulse Effect -->
+<div class="absolute inset-0 bg-white/20 animate-ping"></div>
+</button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<div class="fixed bottom-0 w-full flex justify-center pb-8 z-50">
+<nav class="bg-stone-50/10 backdrop-blur-2xl text-stone-200 fixed bottom-8 left-1/2 -translate-x-1/2 w-[90%] max-w-md rounded-full px-6 py-3 flex justify-between items-center shadow-[0_8px_32px_0_rgba(0,0,0,0.5)] border border-white/5">
+<div class="flex items-center justify-center p-3 text-stone-400 cursor-pointer hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="home_app_logo">home_app_logo</span>
+</div>
+<div class="flex items-center justify-center bg-white text-black rounded-full p-3 scale-110 cursor-pointer transition-transform shadow-lg">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div class="flex items-center justify-center p-3 text-stone-400 cursor-pointer hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="add_a_photo">add_a_photo</span>
+</div>
+<div class="flex items-center justify-center p-3 text-stone-400 cursor-pointer hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="checkroom">checkroom</span>
+</div>
+<div class="flex items-center justify-center p-3 text-stone-400 cursor-pointer hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="Collections">collections</span>
+</div>
+</nav>
+</div>
+</body></html>

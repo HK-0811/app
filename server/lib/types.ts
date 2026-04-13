@@ -3,9 +3,15 @@ export interface WardrobeItem {
   name: string
   category: 'top' | 'bottom' | 'shoes' | 'accessory' | 'eyewear'
   imagePath: string
+  localImagePath?: string
+  sourceImageFile?: string
   colors: string[]
   styleTags: string[]
   layerRole: string
+  garmentType?: string
+  style?: string
+  bottomColor?: string
+  designDetails?: string
 }
 
 export type MissionStage =
@@ -31,4 +37,5 @@ export interface MissionResult {
 export interface OutfitDecision {
   selectedItems: string[]
   explanation: string
+  generationPrompt?: string
 }

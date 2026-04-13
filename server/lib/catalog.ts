@@ -23,11 +23,15 @@ export function resolveWardrobeItems(ids: string[], wardrobe: WardrobeItem[]) {
     .filter((item): item is WardrobeItem => Boolean(item))
 }
 
+export function toDataUrlFromFile(filePath: string) {
+  const buffer = fs.readFileSync(filePath)
+  const extension = path.extname(filePath).slice(1) || 'png'
+  return `data:image/${extension};base64,${buffer.toString('base64')}`
+}
+
 export function toDataUrlFromImage(publicRoot: string, imagePath: string) {
   const localPath = path.join(publicRoot, imagePath.replace(/^\//, ''))
-  const buffer = fs.readFileSync(localPath)
-  const extension = path.extname(localPath).slice(1) || 'png'
-  return `data:image/${extension};base64,${buffer.toString('base64')}`
+  return toDataUrlFromFile(localPath)
 }
 
 export function writeImageDataUrl(outputPath: string, dataUrl: string) {

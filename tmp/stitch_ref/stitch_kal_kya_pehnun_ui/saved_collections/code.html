@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kal Kya Pehnun? - Collections</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#fafaf5",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed-variant": "#5d4201",
+                    "on-primary-fixed": "#1c1b1b",
+                    "surface-container-highest": "#e3e3de",
+                    "on-primary-fixed-variant": "#474746",
+                    "background": "#fafaf5",
+                    "tertiary-container": "#0d1a38",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#ffdea5",
+                    "on-surface": "#1a1c19",
+                    "primary": "#000000",
+                    "on-primary-container": "#858383",
+                    "on-tertiary-container": "#7783a6",
+                    "primary-fixed": "#e5e2e1",
+                    "outline": "#747878",
+                    "on-secondary": "#ffffff",
+                    "tertiary": "#000000",
+                    "on-tertiary-fixed-variant": "#3a4666",
+                    "tertiary-fixed-dim": "#bac6ec",
+                    "inverse-primary": "#c8c6c5",
+                    "inverse-on-surface": "#f1f1ec",
+                    "secondary-container": "#fed488",
+                    "secondary": "#775a19",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "error-container": "#ffdad6",
+                    "inverse-surface": "#2f312e",
+                    "secondary-fixed-dim": "#e9c176",
+                    "tertiary-fixed": "#dae2ff",
+                    "surface-dim": "#dadad5",
+                    "on-secondary-fixed": "#261900",
+                    "surface-tint": "#5f5e5e",
+                    "surface-container-high": "#e8e8e3",
+                    "primary-container": "#1c1b1b",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-container": "#785a1a",
+                    "surface-variant": "#e3e3de",
+                    "outline-variant": "#c4c7c7",
+                    "on-primary": "#ffffff",
+                    "surface": "#fafaf5",
+                    "on-tertiary-fixed": "#0d1a38",
+                    "surface-container": "#eeeee9",
+                    "surface-container-low": "#f4f4ef",
+                    "on-background": "#1a1c19",
+                    "on-surface-variant": "#444748"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+        }
+        .editorial-shadow {
+            box-shadow: 0 8px 32px 0 rgba(26, 28, 25, 0.06);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-background selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-stone-50/70 dark:bg-stone-950/70 backdrop-blur-xl flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<button class="hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-black dark:text-white" data-icon="menu">menu</span>
+</button>
+<h1 class="font-newsreader italic text-2xl tracking-widest text-black dark:text-white">ATELIER</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-stone-500 dark:text-stone-400 font-medium hover:text-black transition-colors" href="#">Home</a>
+<a class="text-stone-500 dark:text-stone-400 font-medium hover:text-black transition-colors" href="#">Wardrobe</a>
+<a class="text-black dark:text-white font-bold" href="#">Collections</a>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant/20">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="close-up portrait of a stylish woman with professional studio lighting and clean minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxUT2mq3kCuPREWl_TUItF2kZwDn2XLz8tBY8MFjqr2MYUCJrNFVo3GOyyn0pyG5l2uw-yeYFX8N6kJJ2MhLpjDMgT57zOC6JcKNvyLPcNsRXAIMYrmciZDkBilnb_zxoIrkCQs31GH1EhGr_7XiCGm42brGm7w0CgBx9jHgutD73YaEUSknfylN8WyWLrA-pu2jGir_He9-oOz2MEjStAGik48Xm7NBD9NXJf2Jy-3ZaFQBlqu8KVzQ0xcj9cmVVtmvdy0ur9VGM"/>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="min-h-screen pt-28 pb-32 px-6 md:px-12 max-w-7xl mx-auto">
+<!-- Header Section -->
+<header class="mb-12">
+<span class="label-sm text-[0.6875rem] uppercase tracking-[0.2rem] text-on-surface-variant mb-2 block font-label font-semibold">Your Curated Archive</span>
+<h2 class="font-headline text-5xl md:text-7xl text-primary tracking-tighter mb-4 italic">Saved Looks</h2>
+<div class="flex flex-wrap gap-3 mt-6">
+<button class="px-6 py-2 rounded-full bg-primary text-on-primary text-sm font-medium hover:scale-105 transition-transform duration-300">All Outfits</button>
+<button class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant text-sm font-medium hover:bg-surface-container-high transition-colors">Recent</button>
+<button class="px-6 py-2 rounded-full bg-surface-container text-on-surface-variant text-sm font-medium hover:bg-surface-container-high transition-colors">Favorites</button>
+</div>
+</header>
+<!-- Collections Grid (Bento Style & Asymmetric) -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Featured Large Card -->
+<div class="md:col-span-8 group cursor-pointer">
+<div class="relative aspect-[16/9] rounded-lg overflow-hidden editorial-shadow bg-surface-container-low transition-transform duration-500 hover:scale-[1.01]">
+<img alt="Outfit" class="w-full h-full object-cover" data-alt="high-fashion street photography of a minimalist beige and cream layered outfit on a clean urban sidewalk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAT0LLWMrDCEbSkQLOtPcC60QSwe6FNX748G7sQhWyPGk_C32822aDUULYjnqjMnHMKagcnCV7B4q0zKx3-QU2nF34XYlnP5NwW9eQ7pZ6efoK1kS6ZxF4JNofIxHKoSINnZ1mxUpNhv6mWqALwTxGTBSNQFTovDEPUGgsWa-H27yXueILR-ou9CX57gbdJPodzsuqpGXsaMmq6LxzFhohuqQ_aweYq_lWyJfqpXLbpl5-oyX-Z0XLXQylRABJcALLrpi11-ZcagEQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-8 left-8">
+<span class="inline-block px-4 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed text-xs font-bold uppercase tracking-wider mb-3">Business Meet</span>
+<h3 class="text-white font-headline text-3xl italic">The Sandstone Edit</h3>
+</div>
+</div>
+</div>
+<!-- Small Card 1 -->
+<div class="md:col-span-4 group cursor-pointer">
+<div class="relative h-full min-h-[400px] rounded-lg overflow-hidden editorial-shadow bg-surface-container-low transition-transform duration-500 hover:scale-[1.01]">
+<img alt="Outfit" class="w-full h-full object-cover" data-alt="editorial close-up of high-end silk garments and tailored trousers hanging in a bright luxury boutique" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4U_0fT67cdv6vkWhtNeNHMRgRIXcWqlofzU5UpfTlaRxVArFuvCJR4Zwh6HghDs-DYpWKNFoNRxWulHfsd0egG2St_-2Gt6eUGsr5-sFfudGhyFXeCv466k_ZWe0rNgpo31HSCJGX1TI1rnKLjCovSjo9yOV7f9IIeRSCdNlGuNk5R5xSgC90Ei4ddjfdpcZYWWkq2VzFRTXGvGF3c8JqVhHYdgUimzwrzTJz6_NdH228PkwHKdnLkEd7yU4Zrdiw5tyr_wmAK-U"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6">
+<span class="inline-block px-4 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md text-on-surface text-xs font-bold uppercase tracking-wider mb-2">Casual Dinner</span>
+<h3 class="text-white font-headline text-2xl">Silk &amp; Slate</h3>
+</div>
+</div>
+</div>
+<!-- Small Card 2 -->
+<div class="md:col-span-4 group cursor-pointer">
+<div class="relative h-full min-h-[400px] rounded-lg overflow-hidden editorial-shadow bg-surface-container-low transition-transform duration-500 hover:scale-[1.01]">
+<img alt="Outfit" class="w-full h-full object-cover" data-alt="full body shot of a person wearing an oversized linen blazer and white sneakers walking through a sunlit courtyard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvitcvaAjs2C9WXicbFr-ndc77vpm4_PWUZJR0hEL1xVIpbl9iywfEc9pD7oiOlrF2r0DXZ3kSpxXmI_-VhE6tKKWeCzZeNhAqj4A6zz3C7_fQcLyKi60LvQkhrXI2SksNityTtIPq6gBEGW-yLikPP5qAbv8D_AaxlC-vZXOA-L_N4Uh0yAmFJO6T0EKqm4RAfFXmY7amZTxcaw2wi42pGEOJI2-PQZGoO8babDlfByIDR1xPKnYcCj1DzYUCJBy715qi7gGWBAI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6">
+<span class="inline-block px-4 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md text-on-surface text-xs font-bold uppercase tracking-wider mb-2">Weekend Brunch</span>
+<h3 class="text-white font-headline text-2xl">Linen Breeze</h3>
+</div>
+</div>
+</div>
+<!-- Medium Card -->
+<div class="md:col-span-4 group cursor-pointer">
+<div class="relative h-full min-h-[400px] rounded-lg overflow-hidden editorial-shadow bg-surface-container-low transition-transform duration-500 hover:scale-[1.01]">
+<img alt="Outfit" class="w-full h-full object-cover" data-alt="moody high-fashion studio shot of a dark charcoal wool coat and minimalist jewelry with dramatic shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCN2e1FSrGBiroOnYW6CCzt-4sXjuk-m9M2s3tzxCvQ-ghzlDSjR4HGxifFuEtDd9uUkfVZPD1ZPw-KHXfS_LY3LH-GIu4SovETojJFXwDICKGjOiodTIaqfeZcfQKAQOoe--hSnLwOrFj90VMv2NuQONVWDlKq6wBb_usItIWAYCjtYvZ9h8i5vnfCxNXsIO44B65lD-G5nEzmvnJbijpRfHLMkovx77WrdS1fm7DZRgrG8DVmzfPnD82jrjGW-gdBzfEJx-wwAE4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6">
+<span class="inline-block px-4 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md text-on-surface text-xs font-bold uppercase tracking-wider mb-2">Night Out</span>
+<h3 class="text-white font-headline text-2xl">Midnight Wool</h3>
+</div>
+</div>
+</div>
+<!-- Small Card 3 -->
+<div class="md:col-span-4 group cursor-pointer">
+<div class="relative h-full min-h-[400px] rounded-lg overflow-hidden editorial-shadow bg-surface-container-low transition-transform duration-500 hover:scale-[1.01]">
+<img alt="Outfit" class="w-full h-full object-cover" data-alt="minimalist flat lay of a white cotton t-shirt blue jeans and designer leather loafers on a neutral stone floor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaXdicrBUAHU0WN00U0iMXcp6m3Y8mjpr58Kpi9dPznKS6lf6-VnjC-pM7pK9v5KwztcVyZbeVZvX_s9vg3wVU0a4MAzHANqG9nIT-vnTOnP9-6qt0U9q1wn0fEVOiUDj-Mk3cKoF3mM5d8Ls30fqW0lkpCHnDkzB_tscsWFitgoMZb3f_MwixktKorM2Qj-1VBHxAlVSIqHKkPZqCx74cZO3uiKHMk-2mGttFyZe3W4GXW5jicGVN7G3jEN5YZAWxSYj-mIoE06s"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6">
+<span class="inline-block px-4 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md text-on-surface text-xs font-bold uppercase tracking-wider mb-2">Office Daily</span>
+<h3 class="text-white font-headline text-2xl">Classic Core</h3>
+</div>
+</div>
+</div>
+</section>
+<!-- Secondary CTA Section -->
+<section class="mt-24 mb-12 text-center">
+<div class="p-12 rounded-xl bg-surface-container-low border border-outline-variant/10 relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="font-headline text-4xl mb-6 tracking-tight">Missing something?</h3>
+<p class="text-on-surface-variant max-w-md mx-auto mb-8 font-light italic">Combine pieces from your digital wardrobe to create your next signature look.</p>
+<button class="px-8 py-4 rounded-full bg-primary text-on-primary font-bold hover:scale-105 transition-transform duration-300">Curate New Outfit</button>
+</div>
+<!-- Abstract Decorative Shapes -->
+<div class="absolute -right-20 -bottom-20 w-64 h-64 bg-secondary-fixed/20 rounded-full blur-3xl"></div>
+<div class="absolute -left-20 -top-20 w-64 h-64 bg-tertiary-fixed/10 rounded-full blur-3xl"></div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile & Tablet) -->
+<div class="fixed bottom-0 w-full flex justify-center pb-8 z-50">
+<nav class="bg-stone-50/70 dark:bg-stone-950/70 backdrop-blur-2xl fixed bottom-8 left-1/2 -translate-x-1/2 w-[90%] max-w-md rounded-full px-6 py-3 shadow-[0_8px_32px_0_rgba(26,28,25,0.06)] flex justify-between items-center">
+<a class="text-stone-400 dark:text-stone-600 p-3 hover:scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="home_app_logo">home_app_logo</span>
+</a>
+<a class="text-stone-400 dark:text-stone-600 p-3 hover:scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+</a>
+<a class="text-stone-400 dark:text-stone-600 p-3 hover:scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="add_a_photo">add_a_photo</span>
+</a>
+<a class="text-stone-400 dark:text-stone-600 p-3 hover:scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="checkroom">checkroom</span>
+</a>
+<a class="bg-black dark:bg-white text-white dark:text-black rounded-full p-3 scale-110 hover:scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="Collections">collections</span>
+</a>
+</nav>
+</div>
+</body></html>

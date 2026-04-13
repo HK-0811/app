@@ -18,6 +18,7 @@ out/
 .env.local
 .env.*.local
 
+
 # Editor & OS files
 .DS_Store
 Thumbs.db

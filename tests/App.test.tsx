@@ -102,7 +102,7 @@ describe('App', () => {
       screen.getByRole('button', { name: /start mission/i })
     ).toBeInTheDocument()
     expect(
-      screen.getByRole('heading', { name: /fashion spin/i })
+      screen.getByRole('heading', { name: /kal kya pehnun/i })
     ).toBeInTheDocument()
   })
 
@@ -112,7 +112,7 @@ describe('App', () => {
     render(<App />)
 
     await user.click(screen.getByRole('button', { name: /start mission/i }))
-    await user.click(screen.getByRole('button', { name: /wardrobe/i }))
+    await user.click(screen.getByRole('button', { name: /open wardrobe/i }))
 
     expect(await screen.findByText(/your locker/i)).toBeInTheDocument()
     expect(screen.getByText(/midnight polo/i)).toBeInTheDocument()
@@ -133,12 +133,12 @@ describe('App', () => {
     await user.click(screen.getByRole('button', { name: /send mission/i }))
 
     expect(
-      await screen.findByRole('heading', { name: /walkout reveal/i })
+      await screen.findByRole('heading', { name: /two ways to wear the mission/i })
     ).toBeInTheDocument()
     expect(screen.getByText(/sharp date-night look/i)).toBeInTheDocument()
     expect(screen.getByText(/brown kurta/i)).toBeInTheDocument()
     expect(screen.getByText(/cream pajama/i)).toBeInTheDocument()
-    expect(screen.queryByText(/midnight polo/i)).not.toBeInTheDocument()
+    expect(screen.getByText(/option 02/i)).toBeInTheDocument()
 
     await waitFor(() => {
       expect(createMission).toHaveBeenCalledWith('Date at 7 pm', undefined)

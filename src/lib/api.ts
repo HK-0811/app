@@ -1,101 +1,102 @@
 import type { MissionResult, WardrobeItem } from '../types'
 
-const wardrobeUrl = '/wardrobe/manifest.json'
-const demoImageUrl = '/img1.png'
-const heroLookIds = ['brown-kurta', 'cream-pajama']
-const stageSchedule = [
-  { stage: 'planning', delay: 450 },
-  { stage: 'selecting', delay: 1000 },
-  { stage: 'rendering', delay: 1650 },
-  { stage: 'done', delay: 2400 },
-] as const
-
-const missionStore = new Map<string, { text: string }>()
-let wardrobeCache: WardrobeItem[] = []
-
-function generateId() {
-  return `mission-${Math.random().toString(36).slice(2, 9)}`
-}
-
-function keepExisting(ids: string[], wardrobe: WardrobeItem[]) {
-  return ids.filter((id) => wardrobe.some((item) => item.id === id))
-}
-
-export function selectLockerItems(_text: string, wardrobe: WardrobeItem[]) {
-  return keepExisting(heroLookIds, wardrobe)
-}
-
-function buildExplanation(text: string, ids: string[]) {
-  const selectedNames = ids
-    .map((id) => wardrobeCache.find((item) => item.id === id)?.name)
-    .filter(Boolean)
-    .join(', ')
-
-  return `Mission decoded for "${text}". We pulled ${selectedNames} from the locker so the reveal feels sharp, intentional, and demo-ready.`
-}
-
-function buildMissionResult(id: string, stage: MissionResult['stage']): MissionResult {
-  const stored = missionStore.get(id)
-  const missionText = stored?.text ?? 'Mission incoming'
-  const selectedItems = selectLockerItems(missionText, wardrobeCache)
-
-  return {
-    id,
-    stage,
-    missionText,
-    selectedItems: stage === 'done' ? selectedItems : [],
-    explanation:
-      stage === 'done'
-        ? buildExplanation(missionText, selectedItems)
-        : '',
-    finalImageUrl: stage === 'done' ? demoImageUrl : null,
-    error: null,
-    stageTimings: {
-      [stage]: Date.now(),
-    },
-  }
-}
+const API = '/api'
 
 export async function fetchWardrobe(): Promise<WardrobeItem[]> {
-  if (wardrobeCache.length > 0) {
-    return wardrobeCache
-  }
-
-  const res = await fetch(wardrobeUrl)
+  const res = await fetch(`${API}/wardrobe`)
   if (!res.ok) {
     throw new Error('Failed to load wardrobe')
   }
-
-  wardrobeCache = (await res.json()) as WardrobeItem[]
-  return wardrobeCache
+  return res.json()
 }
 
 export async function createMission(
   text?: string,
-  _audio?: Blob
+  audio?: Blob
 ): Promise<{ id: string }> {
-  const missionText = text?.trim()
-  if (!missionText) {
-    throw new Error('Mission text is required')
+  const formData = new FormData()
+  if (text?.trim()) {
+    formData.append('text', text.trim())
+  }
+  if (audio) {
+    formData.append('audio', audio, 'mission.webm')
   }
 
-  const id = generateId()
-  missionStore.set(id, { text: missionText })
-  return { id }
+  const res = await fetch(`${API}/missions`, {
+    method: 'POST',
+    body: formData,
+  })
+
+  if (!res.ok) {
+    throw new Error('Failed to create mission')
+  }
+
+  return res.json()
 }
 
 export async function getMission(id: string): Promise<MissionResult> {
-  return buildMissionResult(id, 'done')
+  const res = await fetch(`${API}/missions/${id}`)
+  if (!res.ok) {
+    throw new Error('Mission not found')
+  }
+  return res.json()
+}
+
+export async function transcribeAudio(audio: Blob): Promise<{ text: string }> {
+  const formData = new FormData()
+  formData.append('audio', audio, 'audio.webm')
+
+  const res = await fetch(`${API}/transcribe`, {
+    method: 'POST',
+    body: formData,
+  })
+
+  if (!res.ok) {
+    throw new Error('Failed to transcribe audio')
+  }
+
+  return res.json()
 }
 
 export function pollMission(id: string, onUpdate: (m: MissionResult) => void): () => void {
-  const timers = stageSchedule.map(({ stage, delay }) =>
-    window.setTimeout(() => {
-      onUpdate(buildMissionResult(id, stage))
-    }, delay)
-  )
+  let active = true
+
+  const poll = async () => {
+    while (active) {
+      try {
+        const mission = await getMission(id)
+        onUpdate(mission)
+        if (mission.stage === 'done' || mission.stage === 'error') {
+          break
+        }
+      } catch {
+        // Keep polling during transient startup issues.
+      }
+
+      await new Promise((resolve) => setTimeout(resolve, 900))
+    }
+  }
+
+  void poll()
 
   return () => {
-    timers.forEach((timer) => window.clearTimeout(timer))
+    active = false
   }
+}
+
+export async function saveWardrobeMetadata(
+  metadata: { garment_type: string; style: string; color: string; design_details: string },
+  fileName?: string
+): Promise<{ success: boolean }> {
+  const res = await fetch(`${API}/wardrobe/save`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ metadata, fileName }),
+  })
+
+  if (!res.ok) {
+    throw new Error('Failed to save wardrobe metadata')
+  }
+
+  return res.json()
 }

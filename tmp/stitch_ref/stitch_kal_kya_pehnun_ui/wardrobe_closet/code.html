@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#fafaf5",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed-variant": "#5d4201",
+                    "on-primary-fixed": "#1c1b1b",
+                    "surface-container-highest": "#e3e3de",
+                    "on-primary-fixed-variant": "#474746",
+                    "background": "#fafaf5",
+                    "tertiary-container": "#0d1a38",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#ffdea5",
+                    "on-surface": "#1a1c19",
+                    "primary": "#000000",
+                    "on-primary-container": "#858383",
+                    "on-tertiary-container": "#7783a6",
+                    "primary-fixed": "#e5e2e1",
+                    "outline": "#747878",
+                    "on-secondary": "#ffffff",
+                    "tertiary": "#000000",
+                    "on-tertiary-fixed-variant": "#3a4666",
+                    "tertiary-fixed-dim": "#bac6ec",
+                    "inverse-primary": "#c8c6c5",
+                    "inverse-on-surface": "#f1f1ec",
+                    "secondary-container": "#fed488",
+                    "secondary": "#775a19",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "error-container": "#ffdad6",
+                    "inverse-surface": "#2f312e",
+                    "secondary-fixed-dim": "#e9c176",
+                    "tertiary-fixed": "#dae2ff",
+                    "surface-dim": "#dadad5",
+                    "on-secondary-fixed": "#261900",
+                    "surface-tint": "#5f5e5e",
+                    "surface-container-high": "#e8e8e3",
+                    "primary-container": "#1c1b1b",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-container": "#785a1a",
+                    "surface-variant": "#e3e3de",
+                    "outline-variant": "#c4c7c7",
+                    "on-primary": "#ffffff",
+                    "surface": "#fafaf5",
+                    "on-tertiary-fixed": "#0d1a38",
+                    "surface-container": "#eeeee9",
+                    "surface-container-low": "#f4f4ef",
+                    "on-background": "#1a1c19",
+                    "on-surface-variant": "#444748"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Newsreader"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .liquid-hover:hover {
+            transform: scale(1.02);
+            transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface selection:bg-secondary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-stone-50/70 dark:bg-stone-950/70 backdrop-blur-xl flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<button class="hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-black dark:text-white" data-icon="menu">menu</span>
+</button>
+<h1 class="font-newsreader italic text-2xl tracking-widest text-black dark:text-white">ATELIER</h1>
+</div>
+<div class="flex items-center gap-6">
+<!-- Hidden on mobile as per Responsive Pivot rule -->
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-stone-500 dark:text-stone-400 font-inter text-[10px] uppercase tracking-[0.05rem] hover:opacity-80 transition-opacity" href="#">Home</a>
+<a class="text-stone-500 dark:text-stone-400 font-inter text-[10px] uppercase tracking-[0.05rem] hover:opacity-80 transition-opacity" href="#">Discover</a>
+<a class="text-black dark:text-white font-bold font-inter text-[10px] uppercase tracking-[0.05rem]" href="#">Wardrobe</a>
+<a class="text-stone-500 dark:text-stone-400 font-inter text-[10px] uppercase tracking-[0.05rem] hover:opacity-80 transition-opacity" href="#">Stylist</a>
+</nav>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-high">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="Professional close-up portrait of a chic woman with minimalist jewelry and soft editorial studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf4jtmdxlmV7r4R9I2n-0R5hYtzHR3ns7B4hf_dB3F9rHQ0Zq61WLzxLXsSsfwPErblKsVvlF4PDlNl8bh2emVvEP2tHYfJUZmGx_BiUcuZvP_OIjm-Pv6ABRBObiJ1surCIda6AIuaAVskXNh8oqnMkbEXVFTdjhK-expSC0yNJxFNF1LLz6isLQcSXJ_qcbYnbWjps8bNR--9JihJ5LSrsbzT8I0YdN6ZAjpSP3I8nMLderY8lsUfHR7X3bY0iHsqGsb7bL6PGg"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+<!-- Editorial Header -->
+<div class="mb-12">
+<p class="font-label text-[0.6875rem] uppercase tracking-[0.15rem] text-secondary mb-2">Inventory</p>
+<h2 class="font-headline text-5xl md:text-6xl tracking-tighter text-on-surface">The Wardrobe</h2>
+</div>
+<!-- Categories / Chips -->
+<section class="flex gap-3 mb-10 overflow-x-auto pb-4 no-scrollbar">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full text-sm font-medium liquid-hover">All Items</button>
+<button class="bg-surface-container-low text-on-surface px-8 py-3 rounded-full text-sm font-medium liquid-hover hover:bg-surface-container-high transition-colors">Tops</button>
+<button class="bg-surface-container-low text-on-surface px-8 py-3 rounded-full text-sm font-medium liquid-hover hover:bg-surface-container-high transition-colors">Bottoms</button>
+<button class="bg-surface-container-low text-on-surface px-8 py-3 rounded-full text-sm font-medium liquid-hover hover:bg-surface-container-high transition-colors">Shoes</button>
+<button class="bg-surface-container-low text-on-surface px-8 py-3 rounded-full text-sm font-medium liquid-hover hover:bg-surface-container-high transition-colors">Accessories</button>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Item Card 1 (Large Editorial Focus) -->
+<div class="lg:col-span-2 group relative bg-surface-container-lowest/80 backdrop-blur-sm rounded-lg overflow-hidden shadow-[0_8px_32px_0_rgba(26,28,25,0.06)]">
+<div class="aspect-[16/9] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Premium beige wool overcoat hanging on a minimalist wooden hanger against a clean textured off-white wall" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8FbBKiHvh-wjun0qjUlu3Pj9Jpypo3kgyO6Z53ZWkST1V8UATTPMsPIkpD0tP-wfdr-VE2XccGMm1RX7bWgY3vvXWKkXETiVLUVsYLiyGfFOWrlI1me-wmOLKCw8tNdHALb_JrJxRqxaPbZ1QuPHteBxp0l0BxRMM6rPzNaH-dbhQSWsViDbjKDVg-AMhpzBywNb5xhzedN7xryiLTmbk8lwgiIuVHQLsck7hXFUNNNq8DySJJMta9apy-o0aG0GA6_JnhNXAHfo"/>
+</div>
+<div class="p-8 flex justify-between items-end">
+<div>
+<span class="font-label text-[0.6875rem] uppercase tracking-[0.1rem] text-stone-400">Outerwear</span>
+<h3 class="font-headline text-2xl mt-1">Cashmere Blend Overcoat</h3>
+</div>
+<div class="flex gap-2">
+<span class="bg-secondary-fixed text-on-secondary-fixed px-3 py-1 rounded-full text-[10px] uppercase font-bold tracking-wider">Most Worn</span>
+</div>
+</div>
+</div>
+<!-- Item Card 2 -->
+<div class="group bg-surface-container-lowest/80 backdrop-blur-sm rounded-lg overflow-hidden shadow-[0_8px_32px_0_rgba(26,28,25,0.06)]">
+<div class="aspect-square overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Close up of a black organic cotton t-shirt with premium texture detail on a light grey background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7Fy_pBH2MKHeoNH3DaSdiVlSnMnq7t96Az5BqL1BaPxZK8Nn5oaQsBesWYNyXsMSoYnel796DfraRSYJ7uctY38nNczTqQo47NGDi2SzBKVS2z_UkhoDjrFTmniSOBJHXFZ9vlGd0tBlHE_-owMxbZC95VAVFdFVBf8lMl6tFUA0l1KbwDUzGthymS8lLDaAy0rbB7GW_i4AdGGrqjMbJYDwqOVPf3mrB-PQ1TlwjK5o-NDKuU1KtwsgmGqqmioPU2OjEsryyd4E"/>
+</div>
+<div class="p-6">
+<span class="font-label text-[0.6875rem] uppercase tracking-[0.1rem] text-stone-400">Tops</span>
+<h3 class="font-headline text-xl mt-1">Signature Black Tee</h3>
+</div>
+</div>
+<!-- Item Card 3 -->
+<div class="group bg-surface-container-lowest/80 backdrop-blur-sm rounded-lg overflow-hidden shadow-[0_8px_32px_0_rgba(26,28,25,0.06)]">
+<div class="aspect-square overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Folded dark wash denim jeans on a clean white surface with soft natural window light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzZWIrBu2dD0piZn_76pxpdNI5d9X1FzAjo1SA0glKAtoPQm8iUAoyIzeNO-XQgPmP14n2LZx-yzO-WESJItD0X_1BcfQbyTYXsca_issuRwQm3pp1gdKa5W-q6M2fjngaOT9c-5QYa4dl2YWJnFel23lA0wTVyjPwxoxILo3aTqFjkZU5X9WE4HOdFE0QFdSV58NY3hh47m32QFPPGVEtF6PZOhcIOSH93MdwEv4YDtL-HvF6m5f_aORXlIHLDOtrnL2rUExaZhM"/>
+</div>
+<div class="p-6">
+<span class="font-label text-[0.6875rem] uppercase tracking-[0.1rem] text-stone-400">Bottoms</span>
+<h3 class="font-headline text-xl mt-1">Selvedge Denim Indigo</h3>
+</div>
+</div>
+<!-- Item Card 4 -->
+<div class="group bg-surface-container-lowest/80 backdrop-blur-sm rounded-lg overflow-hidden shadow-[0_8px_32px_0_rgba(26,28,25,0.06)]">
+<div class="aspect-square overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Luxury white leather sneakers presented in a clean architectural composition with sharp shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDerSTWD7S2yIblE4OTG_NahPCnW3Hje5rx2pAOXPZaAapvi83Axw-VZRlzEPOEyEdIw4kAYX0wZAJsp1b5MfLImuAD_jCJ-KujrRr3cK1EUMiQmVHH1NBqUo8xHzIXh_e0jfG8LYoHkJy8NgpPPk3jm5C-5LD4JJEdHeV6w5GcVJEYJ29Y63SdikuCa5gkH4V21p9836jywxD1F_mbqAlaebMbB3rzSfrD9duNAWSfua3Lq8HVE6-VSao6cA1RfS9pNqvfD15jHzM"/>
+</div>
+<div class="p-6">
+<span class="font-label text-[0.6875rem] uppercase tracking-[0.1rem] text-stone-400">Shoes</span>
+<h3 class="font-headline text-xl mt-1">Minimalist Court Sneaker</h3>
+</div>
+</div>
+<!-- Item Card 5 -->
+<div class="group bg-surface-container-lowest/80 backdrop-blur-sm rounded-lg overflow-hidden shadow-[0_8px_32px_0_rgba(26,28,25,0.06)]">
+<div class="aspect-square overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Elegant gold wristwatch and matching bracelet on a marble surface with warm sunset lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe9LHkwkChws9CCksv4s4nlkfM2eodicLoafL9Nckpez4KubL3Ta4BCX7LiTLu6p2coLXXRIWLNm02GoRy-ykjhXqmmyMFEeecDtJB5q0khrAbMDi8bhZfGLQTCEWWmaJsAeCYXIfyXzai4dC7PedIDkyy2HVDo_HyfZftUSoGjH0b9S6qNLKZ20uV4inqZ6gmWnadQ7jMk-tUtgr7Kx4L_3Ophhb7KwjqkakJoHF77tyur50j5psT_oqJ1yJPoP5Xg3UpsswlnO8"/>
+</div>
+<div class="p-6">
+<span class="font-label text-[0.6875rem] uppercase tracking-[0.1rem] text-stone-400">Accessories</span>
+<h3 class="font-headline text-xl mt-1">Chronograph Timepiece</h3>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-8 z-[60] bg-black dark:bg-white text-white dark:text-black w-16 h-16 rounded-full flex items-center justify-center shadow-[0_12px_40px_rgba(0,0,0,0.2)] liquid-hover active:scale-90 transition-all duration-300">
+<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
+</button>
+<!-- BottomNavBar (Mobile only) -->
+<div class="md:hidden fixed bottom-0 w-full flex justify-center pb-8 z-50">
+<nav class="bg-stone-50/70 dark:bg-stone-950/70 backdrop-blur-2xl w-[90%] max-w-md rounded-full px-6 py-3 flex justify-between items-center shadow-[0_8px_32px_0_rgba(26,28,25,0.06)]">
+<button class="text-stone-400 dark:text-stone-600 p-3 hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="home_app_logo">home_app_logo</span>
+</button>
+<button class="text-stone-400 dark:text-stone-600 p-3 hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+</button>
+<button class="text-stone-400 dark:text-stone-600 p-3 hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="add_a_photo">add_a_photo</span>
+</button>
+<!-- Active State Logic applied to Wardrobe (checkroom) -->
+<button class="bg-black dark:bg-white text-white dark:text-black rounded-full p-3 scale-110">
+<span class="material-symbols-outlined" data-icon="checkroom" style="font-variation-settings: 'FILL' 1;">checkroom</span>
+</button>
+<button class="text-stone-400 dark:text-stone-600 p-3 hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="Collections">collections</span>
+</button>
+</nav>
+</div>
+</body></html>

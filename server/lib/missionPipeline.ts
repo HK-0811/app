@@ -1,8 +1,8 @@
 import path from 'path'
-import { resolveWardrobeItems, toDataUrlFromImage, writeImageDataUrl } from './catalog'
+import { resolveWardrobeItems, writeImageDataUrl } from './catalog'
 import { generateLookWithOpenRouter, selectOutfitWithOpenRouter } from './openRouter'
 import type { MissionResult, MissionStage, WardrobeItem } from './types'
-import { transcribeAudioBuffer } from './whisper'
+import { getBaseImagePath } from './wardrobeCatalog'
 
 interface MissionAudioInput {
   buffer: Buffer
@@ -14,6 +14,7 @@ interface PipelineContext {
   mission: MissionResult
   wardrobe: WardrobeItem[]
   publicRoot: string
+  wardrobeRoot: string
   audio?: MissionAudioInput
 }
 
@@ -26,29 +27,13 @@ function setStage(mission: MissionResult, stage: MissionStage) {
   mission.stageTimings[stage] = Date.now()
 }
 
-function buildImagePromptSummary(selectedItems: WardrobeItem[]) {
-  return selectedItems
-    .map((item) => `${item.name} (${item.category}; ${item.colors.join(', ')})`)
-    .join(', ')
-}
-
 export async function runMissionPipeline({
   mission,
   wardrobe,
   publicRoot,
-  audio,
+  wardrobeRoot,
 }: PipelineContext) {
   try {
-    if (audio) {
-      setStage(mission, 'transcribing')
-      mission.missionText = await transcribeAudioBuffer(
-        audio.buffer,
-        audio.mimeType,
-        audio.fileName
-      )
-      await sleep(300)
-    }
-
     setStage(mission, 'planning')
     await sleep(250)
 
@@ -60,16 +45,18 @@ export async function runMissionPipeline({
 
     setStage(mission, 'rendering')
     const selectedGarments = resolveWardrobeItems(mission.selectedItems, wardrobe)
-    const promptSummary = buildImagePromptSummary(selectedGarments)
-    const imageInputs = [
-      toDataUrlFromImage(publicRoot, '/character/base.png'),
-      ...selectedGarments.map((item) => toDataUrlFromImage(publicRoot, item.imagePath)),
-    ]
+    const selectedGarment = selectedGarments[0]
+
+    if (!selectedGarment) {
+      throw new Error('No wardrobe item was selected for image generation.')
+    }
 
     const generatedImage = await generateLookWithOpenRouter(
       mission.missionText,
-      promptSummary,
-      imageInputs
+      selectedGarment,
+      decision.generationPrompt ??
+        `Dress the character in ${selectedGarment.name}.`,
+      getBaseImagePath(wardrobeRoot)
     )
 
     if (generatedImage) {
@@ -77,11 +64,12 @@ export async function runMissionPipeline({
       writeImageDataUrl(outputPath, generatedImage)
       mission.finalImageUrl = `/generated/${mission.id}.png`
     } else {
-      mission.finalImageUrl = '/character/base.png'
+      mission.finalImageUrl = '/wardrobe-assets/base_img.png'
     }
 
     setStage(mission, 'done')
   } catch (error) {
+    console.error('[MissionPipeline] Error:', error)
     mission.stage = 'error'
     mission.error =
       error instanceof Error ? error.message : 'Mission pipeline failed.'

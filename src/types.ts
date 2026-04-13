@@ -6,6 +6,11 @@ export interface WardrobeItem {
   colors: string[]
   styleTags: string[]
   layerRole: string
+  garmentType?: string
+  style?: string
+  bottomColor?: string
+  designDetails?: string
+  source?: 'local' | 'filesystem'
 }
 
 export type MissionStage = 'idle' | 'transcribing' | 'planning' | 'selecting' | 'rendering' | 'done' | 'error'
